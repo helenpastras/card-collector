@@ -40,15 +40,17 @@ app.use(
 
 
 // import db model
-// const Card = require("./models/cards.js");
-// app.use(express.urlencoded({extended: false}))
+const Card = require("./models/cards.js");
+app.use(express.urlencoded({extended: false}))
 
 app.use(methodOverride("_method"));
 app.use(morgan("dev"));
 
 // __________________Routes
 app.get("/", async (req, res) => {
-    res.render("home.ejs")
+    res.render("home.ejs", {
+        user: req.session.user,
+    });
 });
 
 
