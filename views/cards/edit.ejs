@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title><%= card.character %></title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+
+    <h1>Edit <%= card.character %></h1>
+    <form action="/cards/<%=card._id%>?_method=PUT" method="POST">
+  <label for="brandName">Brand Name: </label>
+  <input type="text" name="brandName" value="<%= card.brandName %>" />
+
+  <label for="seriesName">Series Name: </label>
+  <input type="text" name="seriesName" value="<%= card.seriesName %>"/>
+
+  <label for="characterName">Character: </label>
+  <input type="text" name="charactername" value="<%= card.characterName %>"/>
+
+  <label for="releaseYear">Release Year: </label>
+  <input type="number" name="releaseYear" value="<%= card.releaseYear %>"/>
+
+  <label for="category">Category/Class: </label>
+  <input type="text" name="category" value="<%= card.category %>"/>
+
+  <!-- <label for="image">Image front: </label>
+  <input type="image" name="category" id="category"  /> -->
+
+  <button type="submit">Add Card</button>
+</form>
+
+  </body>
+</html>

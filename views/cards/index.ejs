@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cards</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+
+   <div class="index-header-div">
+    <h1>All Cards</h1>
+    
+        <a class="add-card" href="/cards/new">Add new card</a>
+  </div>
+
+  <ul>
+  <ul>
+    <% cards.forEach((card) => { %>
+      <li>
+        <a class="card-cards" href="/cards/<%= card._id %>">
+          <%=card.brandName %> - <%= card.seriesName %> (<%= card.releaseYear %>) - <%= card.characterName %>
+        </a>
+      </li>
+      <% }) %>
+    </ul>
+
+</body>
+</html>

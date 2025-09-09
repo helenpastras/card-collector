@@ -5,6 +5,11 @@ const morgan = require('morgan'); //new
 const path = require('path');
 const session = require('express-session');
 const authController = require("./controllers/auth.js");
+const cardController = require('./controllers/card.js');
+const MongoStore = require("connect-mongo");
+const isSignedIn = require("./middleware/is-signed-in.js");
+const passUserToView = require("./middleware/pass-user-to-view.js");
+
 
 
 
@@ -34,8 +39,16 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGODB_URI,
+    }),
   })
 );
+app.use(passUserToView);
+
+app.use("/card-lounge", isSignedIn, (req,res) =>{
+  res.send(`Welcome to your card lounge ${req.session.user.uesrname}`)
+})
 
 
 
@@ -48,15 +61,14 @@ app.use(morgan("dev"));
 
 // __________________Routes
 app.get("/", async (req, res) => {
-    res.render("home.ejs", {
-        user: req.session.user,
-    });
+    res.render("home.ejs") 
 });
 
 
 
 
 app.use("/auth", authController);
+app.use("/cards", cardController);
 
 
 app.listen(port, () => {

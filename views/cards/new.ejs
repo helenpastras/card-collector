@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Add a Card</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+
+    <h1>Create a New Card!</h1>
+    <form action="/cards" method="POST">
+  <label for="brandName">Brand Name: </label>
+  <input type="text" name="brandName" id="brandName" required />
+
+  <label for="seriesName">Series Name: </label>
+  <input type="text" name="seriesName" id="seriesName" required />
+
+  <label for="characterName">Character: </label>
+  <input type="text" name="characterName" id="characterName" required />
+
+  <label for="releaseYear">Release Year: </label>
+  <input type="number" name="releaseYear" id="releaseYear" required />
+
+  <label for="category">Category/Class: </label>
+  <input type="text" name="category" id="category"/>
+
+  <label for="image">Image front: </label>
+  <input type="url" name="image-front" id="image-front"/>
+
+  <label for="image">Image back: </label>
+  <input type="url" name="image-back" id="image-back" />
+
+
+  <button type="submit">Add Card</button>
+</form>
+
+  </body>
+</html>

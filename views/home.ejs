@@ -7,18 +7,19 @@
     <title>Card Collector</title>
 </head>
 <body>
-    <h1>Welcome to your Card Collector app!</h1>
-    <h3>Your cards. Your vault.</h3>
+ <%- include('./partials/_navbar.ejs') %>   
 
   <% if (user) { %>
 <h1>Welcome to your Card Collector, <%= user.username %>!</h1>
+<a href="/auth/sign-out">Sign out</a>
 <% } else { %>
 <h1>Welcome to the Card Collector.</h1>
-<a href="/auth/sign-out">Sign out</a>
+<h3>Your cards. Your vault.</h3>
 <p>
   <a href="/auth/sign-up">Sign up</a> or <a href="/auth/sign-in">sign in</a>.
 </p>
 <% } %>
+
 
 </body>
 </html>

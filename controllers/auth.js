@@ -1,10 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/users.js");
+const Card = require("../models/cards.js")
 const bcrypt = require("bcrypt");
-
-
-
 
 
 router.get("/sign-up", (req, res) => {
@@ -36,6 +34,7 @@ router.post("/sign-up", async (req, res) => {
     const user = await User.create(req.body);
     console.log(user)
     res.send(`Thanks for signing up ${user.username}`);
+    res.redirect(`/cards`);
 });
 
 router.post('/sign-in', async (req, res) => {
@@ -58,10 +57,10 @@ router.post('/sign-in', async (req, res) => {
       username: userInDatabase.username,
       _id: userInDatabase._id,
     };
-    res.redirect('/');
+    res.redirect('/cards');
   } catch (error) {
     console.log(error);
-    res.redirect('/');
+    res.redirect('/cards');
   }
 });
 

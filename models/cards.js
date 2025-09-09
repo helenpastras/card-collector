@@ -19,23 +19,23 @@ const cardsSchema = new mongoose.Schema({
     type: String,
     required: true
    }, 
-   charactername: {
+   characterName: {
     type: String,
     required: true
    } ,
    releaseYear: {
-    type: Date,
+    type: Number,
     required: true
    },
    images: [imageSchema],
-   catgory: {
+   category: {
     type: String,
     enum: ['common','uncommon', 'rare', 'super-rare', 'ultra-rare', 'die-cast-rare', 'parallels', 'refractor', 'autograph', 'dual-autograph', 'signature' ]
    },
    owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    equired: true
+    required: true
    }
 });
 
