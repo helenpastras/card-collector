@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title><%= card.characterName %></title>
+  </head>
+  <body>
+     <div class="card-details">
+        <h1><%= card.brandName %> <%=card.seriesName%></h1>
+        
+        <ul>
+            <li><strong>Brand:</strong> <%= card.brandName %></li>
+            <li><strong>Series & Year:</strong> <%= card.seriesName %> (<%= card.releaseYear %>)</li>
+            <li><strong>Character / Scene:</strong> <%= card.characterName %></li>
+            <li><strong>Category:</strong> <%= card.category %></li>
+        </ul>
+        <div class="card-images">
+            <% if (card.images && card.images.length >0) { %>
+                <% card.images.forEach((img) => { %>
+                <div class="card-image">
+                    <img src="<%= img.imageUrl %>" alt="<%= img.imageAlt || 'Card image' %>" />
+                    <% if (img.imageAlt) { %>
+                        <p><%= img.imageAlt %></p>
+                    <% } %>
+                </div>
+                <% }) %>
+            <% } else { %>
+                <p>No images available for this card.</p>
+            <% } %>
+        </div>
+    </div>
+
+<div class="card-actions">
+   <form
+     class="delete-form"
+     action="/cards/<%=card._id%>?_method=DELETE"
+     method="POST"
+   >
+     <button class="delete-button" type="submit">
+       Delete <%= card.characterName %>
+     </button>
+   </form>
+   <a class="edit-link" href="/cards/<%= card._id %>/edit">
+     <div class="edit-text">Edit <%= card.characterName %></div>
+   </a>
+ </div>
+
+    
+    <a class="card-index-link" href="/cards">
+        <div class="index-link-text">Back to All Cards</div>
+    </a>
+  </body>
+</html>

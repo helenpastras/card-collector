@@ -17,28 +17,30 @@ router.get('/', async (req, res) => {
 
 
 router.get('/new', async (req, res) => {
-  res.render('cards/new.ejs');
+  const categoryOptions = Card.schema.path('category').enumValues;
+  res.render('cards/new.ejs', {categoryOptions});
 });
 
 
-// router.get('/:cardId', async (req, res) => {
-//   try {
-//       const card = await Card.find({owner: req.session.user._id});
-//       console.log(allCards);
-//       res.render("cards/show.ejs", {cards: allCards});
-//   } catch (error) {
-//     // If any errors, log them and redirect back home
-//     console.log(error);
-//     res.redirect('/');
-//   }
-// });
+router.get('/:cardId', async (req, res) => {
+  try {
+      const card = await Card.findOne({
+      _id: req.params.cardId,
+      owner: req.session.user._id
+    });
+      res.render("cards/show.ejs", { card });
+  } catch (error) {
+    console.log(error);
+    res.redirect('/');
+  }
+});
 
 router.get("/:cardId/edit", async (req,res) => {
     try {
         const owner = await User.findById(req.session.user._id);
-        const card = owner.cards.id(req.params.cardId);
-        res.render("cards/edit.ejs", {
-            card:card,
+        const categoryOptions = Card.schema.path('category').enumValues;
+        res.render('cards/edit.ejs', { 
+          card, categoryOptions 
         });
     }catch (error){
         console.log(error);

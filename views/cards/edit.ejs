@@ -24,7 +24,12 @@
   <input type="number" name="releaseYear" value="<%= card.releaseYear %>"/>
 
   <label for="category">Category/Class: </label>
-  <input type="text" name="category" value="<%= card.category %>"/>
+  <select name="category" id="category" required>
+  <option value="">-- Select a category --</option>
+  <% categoryOptions.forEach((cat) => { %>
+    <option value="<%= cat %>" <%= card.category === cat ? 'selected' : '' %>><%= cat.charAt(0).toUpperCase() + cat.slice(1) %></option>
+  <% }) %>
+</select>
 
   <!-- <label for="image">Image front: </label>
   <input type="image" name="category" id="category"  /> -->
