@@ -7,6 +7,10 @@
   </head>
   <body>
     <h1>Sign in</h1>
+    <% if (message){ %>
+      <p><%=message%></p>
+    <% } %>
+   
     <form action="/auth/sign-in" method="POST">
       <label for="username">Username:</label>
       <input type="text" name="username" id="username" />

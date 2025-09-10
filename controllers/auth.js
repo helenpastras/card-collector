@@ -10,7 +10,7 @@ router.get("/sign-up", (req, res) => {
 });
 
 router.get("/sign-in", (req, res) => {
-  res.render("auth/sign-in.ejs");
+  res.render("auth/sign-in.ejs", {message: null});
 });
 
 router.get("/sign-out", (req,res) => {
@@ -33,8 +33,8 @@ router.post("/sign-up", async (req, res) => {
     // create the user 
     const user = await User.create(req.body);
     console.log(user)
-    res.send(`Thanks for signing up ${user.username}`);
-    res.redirect(`/cards`);
+    // res.send(`Thanks for signing up ${user.username}`);
+    res.render("auth/sign-in.ejs", {message:`Thanks for signing up, ${user.username}`})
 });
 
 router.post('/sign-in', async (req, res) => {

@@ -10,32 +10,41 @@
     <%- include('../partials/_navbar.ejs') %>
 
     <h1>Edit <%= card.character %></h1>
-    <form action="/cards/<%=card._id%>?_method=PUT" method="POST">
-  <label for="brandName">Brand Name: </label>
-  <input type="text" name="brandName" value="<%= card.brandName %>" />
 
-  <label for="seriesName">Series Name: </label>
-  <input type="text" name="seriesName" value="<%= card.seriesName %>"/>
+    <% 
+    const frontImage = card.images.find(img => img.imageAlt === 'front');
+    const backImage = card.images.find(img => img.imageAlt === 'back');
+    %>
+    
+  <form action="/cards/<%=card._id%>?_method=PUT" method="POST">
+    <label for="brandName">Brand Name: </label>
+    <input type="text" name="brandName" value="<%= card.brandName %>" />
 
-  <label for="characterName">Character: </label>
-  <input type="text" name="charactername" value="<%= card.characterName %>"/>
+    <label for="seriesName">Series Name: </label>
+    <input type="text" name="seriesName" value="<%= card.seriesName %>"/>
 
-  <label for="releaseYear">Release Year: </label>
-  <input type="number" name="releaseYear" value="<%= card.releaseYear %>"/>
+    <label for="characterName">Character: </label>
+    <input type="text" name="charactername" value="<%= card.characterName %>"/>
 
-  <label for="category">Category/Class: </label>
-  <select name="category" id="category" required>
-  <option value="">-- Select a category --</option>
-  <% categoryOptions.forEach((cat) => { %>
-    <option value="<%= cat %>" <%= card.category === cat ? 'selected' : '' %>><%= cat.charAt(0).toUpperCase() + cat.slice(1) %></option>
-  <% }) %>
-</select>
+    <label for="releaseYear">Release Year: </label>
+    <input type="number" name="releaseYear" value="<%= card.releaseYear %>"/>
 
-  <!-- <label for="image">Image front: </label>
-  <input type="image" name="category" id="category"  /> -->
+    <label for="category">Category/Class: </label>
+      <select name="category" id="category" required>
+        <option value="">-- Select a category --</option>
+        <% categoryOptions.forEach((cat) => { %>
+          <option value="<%= cat %>" <%= card.category === cat ? 'selected' : '' %>><%= cat.charAt(0).toUpperCase() + cat.slice(1) %></option>
+        <% }) %>
+      </select>
 
-  <button type="submit">Add Card</button>
-</form>
+    <label for="image-front">Image front: </label>
+    <input type="url" name="image-front" value="<%= frontImage ? frontImage.imageUrl : '' %>"/>
+
+    <label for="image-back">Image back: </label>
+    <input type="url" name="image-back" value="<%= backImage ? backImage.imageUrl : '' %>"/>
+
+    <button type="submit">Update Card</button>
+  </form>
 
   </body>
 </html>

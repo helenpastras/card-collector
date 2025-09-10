@@ -7,6 +7,8 @@
     <title><%= card.characterName %></title>
   </head>
   <body>
+    <%- include('../partials/_navbar.ejs') %>
+    
      <div class="card-details">
         <h1><%= card.brandName %> <%=card.seriesName%></h1>
         
@@ -19,13 +21,13 @@
         <div class="card-images">
             <% if (card.images && card.images.length >0) { %>
                 <% card.images.forEach((img) => { %>
-                <div class="card-image">
-                    <img src="<%= img.imageUrl %>" alt="<%= img.imageAlt || 'Card image' %>" />
-                    <% if (img.imageAlt) { %>
-                        <p><%= img.imageAlt %></p>
-                    <% } %>
-                </div>
-                <% }) %>
+            <div class="card-image">
+                <img src="<%= img.imageUrl %>" alt="<%= img.imageAlt || 'Card image' %>" />
+                <% if (img.imageAlt) { %>
+                <p><%= img.imageAlt %></p>
+                <% } %>
+            </div>
+            <% }) %>
             <% } else { %>
                 <p>No images available for this card.</p>
             <% } %>

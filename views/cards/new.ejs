@@ -29,12 +29,12 @@
   <% categoryOptions.forEach((cat) => { %>
     <option value="<%= cat %>"><%= cat.charAt(0).toUpperCase() + cat.slice(1) %></option>
   <% }) %>
-</select>
+  </select>
 
-  <label for="image">Image front: </label>
-  <input type="url" name="image-front" id="image-front"/>
+  <label for="image-front">Image front: </label>
+  <input type="url" name="image-front" id="image-front" />
 
-  <label for="image">Image back: </label>
+  <label for="image-back">Image back: </label>
   <input type="url" name="image-back" id="image-back" />
 
 
