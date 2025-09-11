@@ -10,32 +10,39 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
 
-   <div class="index-header-div">
+  <div class="index-header-div">
     <h1>My Cards Collection</h1>
     
         <a class="add-card" href="/cards/new">Add new card</a>
+        <form class="search-form" method="GET" action="/cards">
+          <input type="text" name="q" placeholder="Search cards..." value="<%= searchTerm || '' %>" />
+          <button type="submit">Search</button>
+        </form>
   </div>
 
-  <ul>
-<ul class="card-list">
-  <% cards.forEach((card) => { 
-    const thumb = card.images?.[0]; // grab first image if it exists
-  %>
-    <li class="card-item">
-      <div class="card-info">
-      <a class="card-link" href="/cards/<%= card._id %>">
-        <% if (thumb) { %>
-          <img class="card-thumb" src="<%= thumb.imageUrl %>" alt="<%= thumb.imageAlt || 'Card image' %>" />
-        <% } %>
-        <span class="card-text">
-          <%= card.brandName %> - <%= card.seriesName %> (<%= card.releaseYear %>) - <%= card.characterName %> - <%= card.category %>
-        </span>
-      </a>
-      <a class="idx-edit-link" href="/cards/<%= card._id %>/edit" aria-label="Edit <%= card.characterName %>">✏️ Edit</a>
-      </div>
-    </li>
-  <% }) %>
-</ul>
+<% if (cards.length === 0) { %>
+  <p>No cards found for "<%= searchTerm %>"</p>
+<% } else { %>
+  <ul class="card-list">
+    <% cards.forEach((card) => { 
+      const thumb = card.images?.[0]; // grab first image if it exists
+    %>
+      <li class="card-item">
+        <div class="card-info">
+        <a class="card-link" href="/cards/<%= card._id %>">
+          <% if (thumb) { %>
+            <img class="card-thumb" src="<%= thumb.imageUrl %>" alt="<%= thumb.imageAlt || 'Card image' %>" />
+          <% } %>
+          <span class="card-text">
+            <%= card.brandName %> - <%= card.seriesName %> (<%= card.releaseYear %>) - <%= card.characterName %> - <%= card.category %>
+          </span>
+        </a>
+        <a class="idx-edit-link" href="/cards/<%= card._id %>/edit" aria-label="Edit <%= card.characterName %>">✏️ Edit</a>
+        </div>
+      </li>
+    <% }) %>
+  </ul>
+ <% } %> 
 
 </body>
 </html>

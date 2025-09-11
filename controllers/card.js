@@ -3,25 +3,38 @@ const router = express.Router();
 const User = require("../models/users.js");
 const Card = require("../models/cards.js")
 
-// we will build out our router logic here
+// routers
+//  all cards
 router.get('/', async (req, res) => {
+  const searchTerm = req.query.q;
+  let filter = { owner: req.session.user._id };
+
+  if (searchTerm) {
+    const regex = new RegExp(searchTerm, 'i');
+    filter.$or = [
+      { brandName: regex },
+      { seriesName: regex },
+      { characterName: regex },
+      { category: regex }
+    ];
+  }
+
   try {
-    const cards = await Card.find({ owner: req.session.user._id });
-    res.render('cards/index.ejs', {cards});
-    console.log("Fetched cards:", cards);
+    const cards = await Card.find(filter);
+    res.render('cards/index.ejs', { cards, searchTerm });
   } catch (error) {
     console.log(error);
-    res.redirect(`/`);
+    res.redirect('/');
   }
 });
 
-
+// new card form
 router.get('/new', async (req, res) => {
   const categoryOptions = Card.schema.path('category').enumValues;
   res.render('cards/new.ejs', {categoryOptions});
 });
 
-
+// card page - show
 router.get('/:cardId', async (req, res) => {
   try {
       const card = await Card.findOne({
@@ -36,6 +49,7 @@ router.get('/:cardId', async (req, res) => {
   }
 });
 
+// edit card form
 router.get("/:cardId/edit", async (req,res) => {
     try {
         const card = await Card.findOne({
@@ -52,6 +66,8 @@ router.get("/:cardId/edit", async (req,res) => {
     }
 })
 
+
+// update cards
 router.put('/:cardId', async (req, res) => {
   try {
     const updatedImages = [];
@@ -86,6 +102,7 @@ router.put('/:cardId', async (req, res) => {
   }
 });
 
+// create new card
 router.post("/", async (req,res) => {
   try {
     const images = [];
@@ -120,7 +137,7 @@ router.post("/", async (req,res) => {
 });
     
 
-
+// delete card
 router.delete("/:cardId", async (req,res) => {
     try {
         const card = await Card.findOneAndDelete({
