@@ -58,17 +58,16 @@
             method="POST"
         >
             <button class="delete-button" type="submit">
-            Delete <%= card.characterName %>
+                Delete <%= card.characterName %>
             </button>
         </form>
-        <a class="edit-link" href="/cards/<%= card._id %>/edit">
-            <div class="edit-text">Edit <%= card.characterName %></div>
-        </a>
+    </div>
+    <div class="card-nav-links">
+        <a class="edit-link" href="/cards/<%= card._id %>/edit">Edit <%= card.characterName %></a>
+        <a class="card-index-link" href="/cards">Back to All Cards</a>
     </div>
 
     
-    <a class="card-index-link" href="/cards">
-        <div class="index-link-text">Back to All Cards</div>
-    </a>
+    
   </body>
 </html>

@@ -12,12 +12,14 @@
 
   <div class="index-header-div">
     <h1>My Cards Collection</h1>
-    
+  
+      <div class="index-header-actions">
         <a class="add-card" href="/cards/new">Add new card</a>
         <form class="search-form" method="GET" action="/cards">
           <input type="text" name="q" placeholder="Search cards..." value="<%= searchTerm || '' %>" />
           <button type="submit">Search</button>
         </form>
+      </div>
   </div>
 
 <% if (cards.length === 0) { %>

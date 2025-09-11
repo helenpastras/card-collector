@@ -1,6 +1,31 @@
  @import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap");
 
- body {
+@media (max-width: 600px) {
+  .card-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .card-thumb {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .card-meta {
+    width: 100%;
+  }
+
+   .card-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-images img {
+    max-width: 100%;
+  }
+}
+
+body {
    background: #c2c2d8;
    font-family: "DM Sans", sans-serif;
    display: flex;
@@ -10,12 +35,12 @@
    max-width: 100vw;
  }
 
- h1 {
+h1 {
    color: #035d5f;
    font-size: 3.6em;
  }
 
- footer {
+footer {
    font-size: 0.7em;
    position: fixed;
    left: 0;
@@ -27,64 +52,64 @@
 
 
 form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 100%;
-  max-width: 500px;
-  margin: 2rem auto;
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 500px;
+    margin: 2rem auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 label {
-  font-weight: bold;
-  color: #2d1741;
+    font-weight: bold;
+    color: #2d1741;
 }
 
 input, select {
-  padding: 0.5rem;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
 }
 
 button {
-  background-color: #035d5f;
-  color: white;
-  padding: 0.6rem 1rem;
-  border: none;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    background-color: #035d5f;
+    color: white;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #023f41;
+    background-color: #023f41;
 }
 
 .tldr-welcome {
-  font-size: 1.1rem;
-  max-width: 600px;
-  margin: 1rem auto;
-  text-align: center;
-  line-height: 1.6;
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 1rem auto;
+    text-align: center;
+    line-height: 1.6;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .trading-card {
-  display: block;
-  margin: 2rem auto;
-  max-width: 300px;
+    display: block;
+    margin: 2rem auto;
+    max-width: 300px;
 }
 
- .navigation {
+.navigation {
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -103,120 +128,231 @@ button:hover {
     vertical-align: middle;
  }
 
-.add-card {
+ /* index - all cards styles */
+.index-header-actions {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
     justify-content: center;
-    font-weight: bolder;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.add-card {
+    background-color: #035d5f;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.add-card:hover {
+    background-color: #023f41;
 }
 
 .form-container {
-  text-align: center;
-  margin-top: 2rem;
+    text-align: center;
+    margin-top: 2rem;
 }
  
+.search-form {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    margin: 1rem auto;
+    max-width: 400px;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-form input {
+    flex: 1;
+    padding: 0.4rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
 .card-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .card-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+    width: 100%;
 }
 
 .card-link {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: inherit;
-  gap: 1rem;
-}
-
-.card-thumb {
-  width: 80px;
-  height: auto;
-  border-radius: 6px;
-  object-fit: cover;
-}
-
-.card-text {
-  font-size: 1rem;
-}
-
-.card-info {
     display: flex;
     align-items: center;
-    justify-items: space-between;
+    text-decoration: none;
+    color: inherit;
     gap: 1rem;
 }
 
+.card-thumb {
+    width: 80px;
+    height: auto;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.card-text {
+    font-size: 1rem;
+    word-break: break-word;
+}
+
+.card-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+
 .idx-edit-link {
-    background-color: #2d17419d ;
-    color: white;
-    padding: 0.2rem 0.4rem;
-    border-radius: 2px;
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: background-color 0.3s ease;
+  background-color: #2d17417f;
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .idx-edit-link:hover {
-    background-color: #0056b3;
+  background-color: #4b2a6f;
 }
 
+/* show - individual card page styles */
 .card-details {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  max-width: 600px;
-  margin: 2rem auto;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-sizing: border-box;
 }
 
 .card-details ul {
-  list-style: none;
-  padding: 0;
-  margin: 1rem 0;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
 }
 
 .card-details li {
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.card-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.card-images img {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  object-fit: contain;
+}
+
+.card-flip {
+  perspective: 1000px;
+  margin: 2rem auto;
+  max-width: 400px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-front img, .card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .card-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.card-nav-links {
   display: flex;
-  justify-content: space-between;
-  margin-top: 2rem;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .edit-link, .card-index-link {
-  background-color: #2d1741;
+  background-color: #035d5f;
   color: white;
-  padding: 0.4rem 0.8rem;
+  padding: 0.5rem 1rem;
   border-radius: 4px;
   text-decoration: none;
   font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
 }
 
 .edit-link:hover, .card-index-link:hover {
-  background-color: #0056b3;
+  background-color: #023f41;
 }
 
 .delete-button {
   background-color: #b30000;
   color: white;
-  padding: 0.4rem 0.8rem;
+  padding: 0.5rem 1rem;
   border: none;
   border-radius: 4px;
   font-weight: bold;
+  text-align: center;
   cursor: pointer;
+  max-width: 200px;
+  width: 100%;
+  box-sizing: border-box;
 }
-
 .delete-button:hover {
-  background-color: #7a0000;
+    background-color: #7a0000;
 }
 
