@@ -9,7 +9,7 @@
   <body>
     <%- include('../partials/_navbar.ejs') %>
     
-     <div class="card-details">
+    <div class="card-details">
         <h1><%= card.brandName %> <%=card.seriesName%></h1>
         
         <ul>
@@ -18,9 +18,26 @@
             <li><strong>Character / Scene:</strong> <%= card.characterName %></li>
             <li><strong>Category:</strong> <%= card.category %></li>
         </ul>
+
+        <%
+        const frontImage = card.images.find(img => img.imageAlt === 'front');
+        const backImage = card.images.find(img => img.imageAlt === 'back');
+        %>
+
+        <% if (frontImage && backImage) { %>
+        <div class="card-flip">
+            <div class="card-inner">
+            <div class="card-front">
+                <img src="<%= frontImage.imageUrl %>" alt="Front of card" />
+            </div>
+            <div class="card-back">
+                <img src="<%= backImage.imageUrl %>" alt="Back of card" />
+            </div>
+            </div>
+        </div>
+        <% } else if (card.images && card.images.length > 0) { %>
         <div class="card-images">
-            <% if (card.images && card.images.length >0) { %>
-                <% card.images.forEach((img) => { %>
+            <% card.images.forEach((img) => { %>
             <div class="card-image">
                 <img src="<%= img.imageUrl %>" alt="<%= img.imageAlt || 'Card image' %>" />
                 <% if (img.imageAlt) { %>
@@ -28,26 +45,26 @@
                 <% } %>
             </div>
             <% }) %>
-            <% } else { %>
-                <p>No images available for this card.</p>
-            <% } %>
         </div>
-    </div>
+        <% } else { %>
+        <p>No images available for this card.</p>
+        <% } %>
+ 
 
-<div class="card-actions">
-   <form
-     class="delete-form"
-     action="/cards/<%=card._id%>?_method=DELETE"
-     method="POST"
-   >
-     <button class="delete-button" type="submit">
-       Delete <%= card.characterName %>
-     </button>
-   </form>
-   <a class="edit-link" href="/cards/<%= card._id %>/edit">
-     <div class="edit-text">Edit <%= card.characterName %></div>
-   </a>
- </div>
+    <div class="card-actions">
+        <form
+            class="delete-form"
+            action="/cards/<%=card._id%>?_method=DELETE"
+            method="POST"
+        >
+            <button class="delete-button" type="submit">
+            Delete <%= card.characterName %>
+            </button>
+        </form>
+        <a class="edit-link" href="/cards/<%= card._id %>/edit">
+            <div class="edit-text">Edit <%= card.characterName %></div>
+        </a>
+    </div>
 
     
     <a class="card-index-link" href="/cards">

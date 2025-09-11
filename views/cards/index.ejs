@@ -3,27 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+
     <title>Your Cards</title>
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
 
    <div class="index-header-div">
-    <h1>All Cards</h1>
+    <h1>My Cards Collection</h1>
     
         <a class="add-card" href="/cards/new">Add new card</a>
   </div>
 
   <ul>
-  <ul>
-    <% cards.forEach((card) => { %>
-      <li>
-        <a class="card-cards" href="/cards/<%= card._id %>">
-          <%=card.brandName %> - <%= card.seriesName %> (<%= card.releaseYear %>) - <%= card.characterName %>
-        </a>
-      </li>
-      <% }) %>
-    </ul>
+<ul class="card-list">
+  <% cards.forEach((card) => { 
+    const thumb = card.images?.[0]; // grab first image if it exists
+  %>
+    <li class="card-item">
+      <div class="card-info">
+      <a class="card-link" href="/cards/<%= card._id %>">
+        <% if (thumb) { %>
+          <img class="card-thumb" src="<%= thumb.imageUrl %>" alt="<%= thumb.imageAlt || 'Card image' %>" />
+        <% } %>
+        <span class="card-text">
+          <%= card.brandName %> - <%= card.seriesName %> (<%= card.releaseYear %>) - <%= card.characterName %> - <%= card.category %>
+        </span>
+      </a>
+      <a class="idx-edit-link" href="/cards/<%= card._id %>/edit" aria-label="Edit <%= card.characterName %>">✏️ Edit</a>
+      </div>
+    </li>
+  <% }) %>
+</ul>
 
 </body>
 </html>

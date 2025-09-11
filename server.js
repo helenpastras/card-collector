@@ -28,12 +28,12 @@ db.on('connected', () => {console.log(`Connected to MongoDB ${mongoose.connectio
 db.on('error', (err) => {console.log('Error: ', err)});
 db.on('disconnected', () => {console.log('mongo disconnected')})
 
-// Middleware to parse URL-encoded data from forms
+// _______________middleware_______________
 app.use(express.urlencoded({ extended: false }));
-// Middleware for using HTTP verbs such as PUT or DELETE
 app.use(methodOverride('_method'));
-// Morgan for logging HTTP requests
 app.use(morgan('dev'));
+app.use(express.static(path.join(__dirname, "public")));
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -52,17 +52,19 @@ app.use("/card-lounge", isSignedIn, (req,res) =>{
 
 
 
-// import db model
+// ____________import db model________
 const Card = require("./models/cards.js");
 app.use(express.urlencoded({extended: false}))
 
 app.use(methodOverride("_method"));
 app.use(morgan("dev"));
 
-// __________________Routes
+// __________________routes___________
 app.get("/", async (req, res) => {
     res.render("home.ejs") 
 });
+
+
 
 
 
@@ -71,6 +73,7 @@ app.use("/auth", authController);
 app.use("/cards", cardController);
 
 
+// _____________listeners____________
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
 });
