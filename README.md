@@ -16,36 +16,29 @@ Sing up to start a new collection, or sign in to get access to your existing cat
 ### Attributions/ Citations
 **Images** 
 
->Trading card curtesy of [WikimediaCommons][link]
-
-[link]:https://commons.wikimedia.org/wiki/File:Harry_Potter_wordmark.svg
-
->Logo image curety of [iStock][link].
-
-[link]:https://www.istockphoto.com/
-
-**Colors**
-
-> Thematic colors from [Color-Hex][site]
-
-[site]: https://www.istockphoto.com/
 
 ### Technologies Used
 * Javascript
      * EJS 
      * Conditions *(if statements)*
      * Loops
-     * Iterator Methods
-     * DOM
+     * Models and relating schemas
+     * Authentication
+     * 
 * CSS
     * Flexbox
     * Responsive Design
 *  Markup *(HTML)*
 * Markdown *(this)*
 
+### Plannig materials
+> Trello board for user stories, concept wireframes, and ERD [Trello board][site]
+
+[site]: https://trello.com/invite/b/68c1ce92668586df9e7d5ba5/ATTI053bad1eccdc6697373c0f40c671587936FFD920/card-collector-planning
+
 
 ### Next Steps
-* Post MVP, more themes will be added to allow players to select the universe of choice, like **Starwars** and **MCU**. 
-* More animations will be addded to match each theme. 
 * Light and dark modes for more adaptive play.  
-* Mobile friendly version.
+* Additional criteria and details added on cards. 
+* Upload of images and storage in separate model.
+* Mobile friendly version (enabling even easier image uploads).

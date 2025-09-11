@@ -25,9 +25,64 @@
    padding: 10px;
  }
 
- .trading-card {
-   height: 20%;
- }
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 500px;
+  margin: 2rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+label {
+  font-weight: bold;
+  color: #2d1741;
+}
+
+input, select {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+button {
+  background-color: #035d5f;
+  color: white;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #023f41;
+}
+
+.tldr-welcome {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 1rem auto;
+  text-align: center;
+  line-height: 1.6;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.trading-card {
+  display: block;
+  margin: 2rem auto;
+  max-width: 300px;
+}
 
  .navigation {
     position: sticky;
@@ -55,6 +110,11 @@
     font-weight: bolder;
 }
 
+.form-container {
+  text-align: center;
+  margin-top: 2rem;
+}
+ 
 .card-list {
   list-style: none;
   padding: 0;
@@ -105,5 +165,58 @@
 
 .idx-edit-link:hover {
     background-color: #0056b3;
+}
+
+.card-details {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 2rem auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.card-details li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.edit-link, .card-index-link {
+  background-color: #2d1741;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.edit-link:hover, .card-index-link:hover {
+  background-color: #0056b3;
+}
+
+.delete-button {
+  background-color: #b30000;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #7a0000;
 }
 

@@ -10,37 +10,38 @@
   <body>
     <%- include('../partials/_navbar.ejs') %>
 
-    <h1>Create a New Card!</h1>
-    <form action="/cards" method="POST">
-  <label for="brandName">Brand Name: </label>
-  <input type="text" name="brandName" id="brandName" required />
+    <div class="form-container ">
+      <h1>Create a New Card!</h1>
+      <form action="/cards" method="POST">
+        <label for="brandName">Brand Name: </label>
+        <input type="text" name="brandName" id="brandName" required />
 
-  <label for="seriesName">Series Name: </label>
-  <input type="text" name="seriesName" id="seriesName" required />
+        <label for="seriesName">Series Name: </label>
+        <input type="text" name="seriesName" id="seriesName" required />
 
-  <label for="characterName">Character: </label>
-  <input type="text" name="characterName" id="characterName" required />
+        <label for="characterName">Character: </label>
+        <input type="text" name="characterName" id="characterName" required />
 
-  <label for="releaseYear">Release Year: </label>
-  <input type="number" name="releaseYear" id="releaseYear" required />
+        <label for="releaseYear">Release Year: </label>
+        <input type="number" name="releaseYear" id="releaseYear" required />
 
-  <label for="category">Category/Class: </label>
-  <select name="category" id="category" required>
-  <option value="">-- Select a category --</option>
-  <% categoryOptions.forEach((cat) => { %>
-    <option value="<%= cat %>"><%= cat.charAt(0).toUpperCase() + cat.slice(1) %></option>
-  <% }) %>
-  </select>
+        <label for="category">Category/Class: </label>
+        <select name="category" id="category" required>
+          <option value="">-- Select a category --</option>
+            <% categoryOptions.forEach((cat) => { %>
+              <option value="<%= cat %>"><%= cat.charAt(0).toUpperCase() + cat.slice(1) %></option>
+            <% }) %>
+        </select>
 
-  <label for="image-front">Image front: </label>
-  <input type="url" name="image-front" id="image-front" />
+        <label for="image-front">Image front: </label>
+        <input type="url" name="image-front" id="image-front" />
 
-  <label for="image-back">Image back: </label>
-  <input type="url" name="image-back" id="image-back" />
+        <label for="image-back">Image back: </label>
+        <input type="url" name="image-back" id="image-back" />
 
 
-  <button type="submit">Add Card</button>
-</form>
-
+        <button type="submit">Add Card</button>
+      </form>
+    </div>
   </body>
 </html>
