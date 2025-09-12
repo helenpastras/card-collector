@@ -27,12 +27,16 @@ Sing up to start a new collection, or sign in to get access to your existing cat
 
 ### Technologies Used
 * Javascript
+     * CRUD 
      * EJS 
      * Conditions *(if statements)*
      * Loops
-     * Models and relating schemas
-     * Authentication
      * 
+* Data
+     * MongoDB
+     * Embedded and referenced schemas
+* Auth 
+     * Authentication
 * CSS
     * Flexbox
     * Responsive Design
@@ -48,5 +52,8 @@ Sing up to start a new collection, or sign in to get access to your existing cat
 ### Next Steps
 * Light and dark modes for more adaptive play.  
 * Additional criteria and details added on cards. 
-* Upload of images and storage in separate model.
 * Mobile friendly version (enabling even easier image uploads).
+    * Upload of images and storage in separate model.
+    * Flipping card front & back of the image
+* Public view abd search of all cards in db - view only
+    * Contact/messaging between siged up users with inquiries/questions about cards.
