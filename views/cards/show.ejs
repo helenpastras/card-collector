@@ -52,15 +52,16 @@
  
 
     <div class="card-actions">
-        <form
-            class="delete-form"
-            action="/cards/<%=card._id%>?_method=DELETE"
-            method="POST"
-        >
+        <div class="delete-form">
+            <form
+                action="/cards/<%=card._id%>?_method=DELETE"
+                method="POST"
+            >
             <button class="delete-button" type="submit">
                 Delete <%= card.characterName %>
             </button>
-        </form>
+            </form>
+        </div>
     </div>
     <div class="card-nav-links">
         <a class="edit-link" href="/cards/<%= card._id %>/edit">Edit <%= card.characterName %></a>
